@@ -1,4 +1,8 @@
 .DS_Store
 .idea/
 node_modules/
-/config/dev.js
+config/dev.js
+
+client/node_modules
+client/build
+
