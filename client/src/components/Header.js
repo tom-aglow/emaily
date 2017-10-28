@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Payments from './Payments';
 
 class Header extends Component {
   renderContent() {
@@ -14,11 +15,12 @@ class Header extends Component {
           </a>
         );
       default:
-        return (
-          <a className="navbar-item" href="/api/logout">
+        return [
+          <Payments key="1"/>,
+          <a className="navbar-item" href="/api/logout" key="2">
             Logout
           </a>
-        );
+        ];
     }
   }
 
@@ -44,7 +46,6 @@ class Header extends Component {
           <div className="navbar-menu">
             <div className="navbar-end">
               {this.renderContent()}
-              {/*<a className="navbar-item">Login with Google</a>*/}
             </div>
           </div>
         </div>
