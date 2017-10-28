@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class Header extends Component {
@@ -30,12 +31,15 @@ class Header extends Component {
       >
         <div className="container">
           <div className="navbar-brand">
-            <a className="navbar-item" href="/">
+            <Link
+              className="navbar-item"
+              to={this.props.auth ? '/surveys' : '/'}
+            >
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Android_O_Preview_Logo.png"
                 alt="Bulma: a modern CSS framework based on Flexbox"
               />
-            </a>
+            </Link>
           </div>
           <div className="navbar-menu">
             <div className="navbar-end">
