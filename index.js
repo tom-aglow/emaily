@@ -12,6 +12,7 @@ mongoose.connect(keys.mongoURI);
 
 const app = express();
 
+//	common middleware
 app.use(bodyParser.json());
 app.use(
   cookieSession({
@@ -22,9 +23,21 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// routes
+// 	routes
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
+
+//	production routes
+if (process.env.NODE_ENV === 'production') {
+  //	Express will serve up assets files (main.css, main.js)
+  app.use(express.static('client/build'));
+
+  //	Express will serve up the index.html file if it doesn't recognize the route
+  const path = require('path');
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
