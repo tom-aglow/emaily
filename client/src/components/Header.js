@@ -16,7 +16,7 @@ class Header extends Component {
         );
       default:
         return [
-          <Payments key="1"/>,
+          <Payments key="1" />,
           <a className="navbar-item" href="/api/logout" key="2">
             Logout
           </a>
@@ -44,9 +44,7 @@ class Header extends Component {
             </Link>
           </div>
           <div className="navbar-menu">
-            <div className="navbar-end">
-              {this.renderContent()}
-            </div>
+            <div className="navbar-end">{this.renderContent()}</div>
           </div>
         </div>
       </nav>

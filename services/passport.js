@@ -23,10 +23,11 @@ passport.use(
     },
     //	handle the callback from Google OAUTH
     async (accessToken, refreshToken, profile, done) => {
-      const user = await User.findOne({ googleID: profile.id }) ||
-				await new User({ googleID: profile.id }).save();
-      
-			done(null, user);
+      const user =
+        (await User.findOne({ googleID: profile.id })) ||
+        (await new User({ googleID: profile.id }).save());
+
+      done(null, user);
 
       // if (existingUser) {
       //   done(null, existingUser);
