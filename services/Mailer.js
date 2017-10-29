@@ -43,7 +43,7 @@ class Mailer extends helper.Mail {
     });
 
     //	send mailer to sendgrid and wait for response
-		return await this.sgApi.API(request);
+    return await this.sgApi.API(request);
   }
 }
 
