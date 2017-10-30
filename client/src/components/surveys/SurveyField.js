@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({ input, label }) => {
+export default ({ input, label, meta: { error, touched } }) => {
   return (
     <div className="field">
       <label className="label">{label}</label>
@@ -11,6 +11,7 @@ export default ({ input, label }) => {
           {...input}
         />
       </div>
+      <p className="help is-danger">{touched && error}</p>
     </div>
   );
 };
