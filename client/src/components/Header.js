@@ -17,7 +17,9 @@ class Header extends Component {
       default:
         return [
           <Payments key="1" />,
-					<span className="navbar-item" key="3">Credits: {this.props.auth.credits}</span>,
+          <span className="navbar-item" key="3">
+            Credits: {this.props.auth.credits}
+          </span>,
           <a className="navbar-item" href="/api/logout" key="2">
             Logout
           </a>

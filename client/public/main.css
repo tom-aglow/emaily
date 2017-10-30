@@ -1,0 +1,5 @@
+.add-new-survey.button {
+	position: fixed;
+	left: calc(50% - 27px);
+	bottom: 20px;
+}
