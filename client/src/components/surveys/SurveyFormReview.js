@@ -1,13 +1,41 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 
-const SurveyFormReview = ({ onCancel }) => {
+import formFields from './formFields';
+import * as actions from '../../actions/index';
+import {submitSurvey} from "../../actions/index";
+
+const SurveyFormReview = ({ onCancel, formValues, submitSurvey }) => {
+  const reviewFields = _.map(formFields, ({ label, name }) => {
+    return (
+      <div className="field" key={name}>
+        <label className="label">{label}</label>
+        <div className="control">{formValues[name]}</div>
+      </div>
+    );
+  });
+
   return (
-    <div>
-      <h5>Review</h5>
-      <button className="button is-warning" onClick={onCancel}>
-        Back
-      </button>
+    <div className="content">
+      <h3>Please confirm your entries</h3>
+      <div>{reviewFields}</div>
+			<br/>
+			<div
+				className="field is-grouped"
+				style={{ justifyContent: 'space-between' }}
+			>
+				<div className="control">
+					<button className="button is-warning" onClick={onCancel}>
+						Back
+					</button>
+				</div>
+				<div className="control">
+					<button className="button is-success" onClick={() => submitSurvey(formValues)}>
+						Send Survey
+					</button>
+				</div>
+			</div>
     </div>
   );
 };
@@ -18,4 +46,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(SurveyFormReview);
+export default connect(mapStateToProps, actions)(SurveyFormReview);
