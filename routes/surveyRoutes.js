@@ -30,10 +30,9 @@ module.exports = app => {
       await survey.save();
       req.user.credits--;
       const user = await req.user.save();
+			res.send(user);
     } catch (err) {
       res.status(422).send(err);
     }
-
-    res.send(user);
   });
 };

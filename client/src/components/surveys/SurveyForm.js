@@ -53,7 +53,7 @@ function validate(values) {
   const errors = {};
 
   //	if provided emails are correct
-  errors.emails = validateEmails(values.emails || '');
+  errors.recipients = validateEmails(values.recipients || '');
 
   //	if fields have any value
   _.each(formFields, ({ name }) => {
